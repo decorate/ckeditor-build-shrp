@@ -33,7 +33,7 @@ import Font from '@ckeditor/ckeditor5-font/src/font';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
 
-import imageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 
 export default class ClassicEditor extends ClassicEditorBase {
 }
@@ -66,7 +66,7 @@ ClassicEditor.builtinPlugins = [
 	Strikethrough,
 	underline,
 	Mention,
-	imageResize
+	ImageResize
 ];
 
 // Editor configuration.
