@@ -33,6 +33,8 @@ import Font from '@ckeditor/ckeditor5-font/src/font';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
 
+import imageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+
 export default class ClassicEditor extends ClassicEditorBase {
 }
 
@@ -63,7 +65,8 @@ ClassicEditor.builtinPlugins = [
 	Alignment,
 	Strikethrough,
 	underline,
-	Mention
+	Mention,
+	imageResize
 ];
 
 // Editor configuration.
@@ -79,7 +82,7 @@ ClassicEditor.defaultConfig = {
 			'Verdana',
 			'Time new roman',
 			'Trebuchet MS',
-			'Lucid Sans Unicode',
+			'Lucid Sans Unicode'
 		]
 	},
 	fontSize: {
@@ -161,6 +164,41 @@ ClassicEditor.defaultConfig = {
         },
 	table: {
 		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+	},
+	image: {
+		// Configure the available styles.
+		styles: [
+			'alignLeft', 'alignCenter', 'alignRight'
+		],
+
+		// Configure the available image resize options.
+		resizeOptions: [
+			{
+				name: 'imageResize:original',
+				label: 'Original',
+				value: null
+			},
+			{
+				name: 'imageResize:50',
+				label: '50%',
+				value: '50'
+			},
+			{
+				name: 'imageResize:75',
+				label: '75%',
+				value: '75'
+			}
+		],
+
+		// You need to configure the image toolbar, too, so it shows the new style
+		// buttons as well as the resize buttons.
+		toolbar: [
+			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
+			'|',
+			'imageResize',
+			'|',
+			'imageTextAlternative'
+		]
 	}
 }
 ;
