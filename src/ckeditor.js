@@ -32,8 +32,8 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Font from '@ckeditor/ckeditor5-font/src/font';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
-
 import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert';
 
 export default class ClassicEditor extends ClassicEditorBase {
 }
@@ -66,7 +66,8 @@ ClassicEditor.builtinPlugins = [
 	Strikethrough,
 	underline,
 	Mention,
-	ImageResize
+	ImageResize,
+	ImageInsert
 ];
 
 // Editor configuration.
@@ -87,17 +88,30 @@ ClassicEditor.defaultConfig = {
 	},
 	fontSize: {
 		options: [
-			9,
-			11,
-			13,
-			'default',
-			17,
-			19,
-			21
+			10, 11, 12, 13, 'default', 15, 16, 17, 18, 19, 21
 		]
 	},
 	// eslint-disable-next-line max-len
-	toolbar: [ 'heading', '|', 'bold', 'italic', 'strikethrough', 'underline', '|', 'numberedList', 'bulletedList', '|', 'fontSize', 'fontColor', 'fontBackgroundColor', 'fontFamily', '|', 'link', 'insertTable', 'Alignment' ],
+	toolbar: {
+		items: [
+			'heading',
+			'|',
+			'bold',
+			'italic',
+			'fontSize',
+			'fontColor',
+			'fontBackgroundColor',
+			'Alignment',
+			'|',
+			'link',
+			'bulletedList',
+			'numberedList',
+			'|',
+			'blockquote',
+			'imageInsert',
+			'insertTable'
+		]
+	},
 	heading:
         {
         	options: [
@@ -166,37 +180,32 @@ ClassicEditor.defaultConfig = {
 		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
 	},
 	image: {
-		// Configure the available styles.
 		styles: [
 			'alignLeft', 'alignCenter', 'alignRight'
 		],
-
-		// Configure the available image resize options.
 		resizeOptions: [
 			{
 				name: 'imageResize:original',
-				label: 'Original',
-				value: null
+				value: null,
+				icon: 'original'
 			},
 			{
 				name: 'imageResize:50',
-				label: '50%',
-				value: '50'
+				value: '50',
+				icon: 'medium'
 			},
 			{
 				name: 'imageResize:75',
-				label: '75%',
-				value: '75'
+				value: '75',
+				icon: 'large'
 			}
 		],
-
-		// You need to configure the image toolbar, too, so it shows the new style
-		// buttons as well as the resize buttons.
 		toolbar: [
 			'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight',
 			'|',
-			'imageResize',
-			'|',
+			'imageResize:50',
+			'imageResize:75',
+			'imageResize:original',
 			'imageTextAlternative'
 		]
 	}
