@@ -1,35 +1,77 @@
-CKEditor 5 Custom Build Editor all version v1.0.4
+CKEditor 5 Custom Shrimp Build Editor 
 ========================================
- "version": "1.0.4",
+
+## Documentation
+
+See:
+* https://ckeditor.com/docs/ckeditor5/latest/builds/guides/integration/frameworks/vuejs.html
+
 
 ## Quick start
-
-After cloning the project 
-
 ```bash
-git remote add upstream https://github.com/ckeditor/ckeditor5-build-classic.git
-```
-adding upstream for first time only
-
-then when ever start adding new feature in ck build
- 
-```bash
-git fetch upstream
-git merge upstream/stable
+npm install @team-decorate/ckeditor-build-shrp @ckeditor/ckeditor5-vue
 ```
 
-After Successful build Separate the folders and files for npm
-* build folder
-* package.json 
-* README.md 
+And use it in your component
 
-With updating the Build version.
+```vue
 
- ## Upload Build to Npm 
- 
- login to npm via cmd 
- * npm login
- * npm publish
+<template>
+<ckeditor
+	:editor="editor"
+	v-model="editorData"
+	:config="editorConfig"/>
+</template>
+
+<script>
+import ShrpEditor from '@team-decorate/ckeditor-build-shrp'
+
+export default {
+	data() {
+		return {
+			editor: ShrpEditor,
+			editorData: '<p>Content of the editor.</p>',
+			editorConfig: {}
+		}
+	}
+}
+</script>
+```
+
+## default plugins
+
+```
+ClassicEditor.builtinPlugins = [
+	Essentials,
+	UploadAdapter,
+	Autoformat,
+	Bold,
+	Italic,
+	BlockQuote,
+	CKFinder,
+	EasyImage,
+	Heading,
+	Image,
+	ImageCaption,
+	ImageStyle,
+	ImageToolbar,
+	ImageUpload,
+	Link,
+	List,
+	MediaEmbed,
+	Paragraph,
+	PasteFromOffice,
+	Table,
+	TableToolbar,
+	Font,
+	Alignment,
+	Strikethrough,
+	underline,
+	Mention,
+	ImageResize,
+	ImageInsert
+];
+```
 
 
  ## Ck editor 5
